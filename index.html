@@ -43,9 +43,15 @@
     }
 
     function saveSearchString() {
-    }
-
+      var searches = getRecentSearches();
+      if(!str || searches.indexOf(str) > -1){
+        return false;
+      }
+      searches.push(str);
+      licalStorage.setItem('recentSearches', JSON.stringify(str));
+    }  
     function removeSearches() {
+      localStorage.removeItem('recentSearches');
     }
 
     // Create an li, given string contents, append to the supplied ul
