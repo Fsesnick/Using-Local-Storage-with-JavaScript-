@@ -26,6 +26,10 @@
   <script type="text/javascript">
     'use strict';
     function supportsLocalStorage() {
+      try{
+      return 'localStorage' in window && window['localStorage'] != null;
+    } catch (e){
+      return false;
     }
 
     function getRecentSearches() {
@@ -50,6 +54,8 @@
     }
 
     window.onload = function() {
+      
+      if(supportedLocalStorage()){
       var searchForm = document.getElementById('searchForm');
       var searchBar = document.getElementById('searchBar');
       var recentSearchList = document.getElementById('recentSearchList');
@@ -73,6 +79,7 @@
         removeSearches();
         clearList(recentSearchList);
       });
+     }
     };
   </script>
 </body>
