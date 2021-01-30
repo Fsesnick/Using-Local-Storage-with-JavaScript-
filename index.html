@@ -31,8 +31,15 @@
     } catch (e){
       return false;
     }
+    }   
 
     function getRecentSearches() {
+      var searches = LocalStorage.getItem ('recentSearches');
+      if(searches){
+        return JSON.parse(searches);
+      }else{
+        return [];
+      }
     }
 
     function saveSearchString() {
